@@ -5,8 +5,17 @@
   "main": "index.js",
   "scripts": {
     "prepare": "./scripts/download-router.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "import:subgraph:service": "dotenv rover -- graph introspect http://localhost:4001 > ./subgraphs/service-flowdown.graphql",
+    "import:all:compose": "dotenv rover -- graph introspect http://localhost:4001 > ./subgraphs/service-flowdown.graphql && dotenv rover -- supergraph compose --config ./supergraph/supergraph.yaml > ./supergraph/prod-schema.graphql",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm ./subgraphs/* && rm ./supergraph/prod-schema.graphql",
+    "start": "./bin/router --config ./router.yaml --supergraph ./supergraph/prod-schema.graphql",
+    "start:dev": "./bin/router --dev --config ./router.yaml --supergraph ./supergraph/prod-schema.graphql"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.3.0"
+  }
 }

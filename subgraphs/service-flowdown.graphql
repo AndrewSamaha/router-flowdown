@@ -1,0 +1,37 @@
+type User {
+  id: ID!
+  username: String
+  permissions: [String]
+}
+type Song {
+  id: ID!
+  name: String
+  artist: String
+  duration: String
+}
+type Asana {
+  id: ID!
+  name: String
+  cue: String
+  duration: String
+}
+type Section {
+  id: ID!
+  name: String
+  duration: String
+}
+type Flow {
+  id: ID!
+  name: String
+  sections: [Section]
+  songs: [Song]
+  asanas: [Asana]
+}
+type Query {
+  getAllFlows: [Flow]
+}
+"Exposes a URL that specifies the behavior of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behavior of this scalar."
+    url: String!
+  ) on SCALAR

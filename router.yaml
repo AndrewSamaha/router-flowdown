@@ -1,0 +1,21 @@
+# https://www.apollographql.com/docs/router/configuration/cors
+
+supergraph:
+  listen: 0.0.0.0:4000
+  introspection: true
+
+sandbox:
+  enabled: true
+
+homepage:
+  enabled: true
+
+headers:
+  all:
+    request:
+      - propagate:
+          named: authorization
+
+cors:
+  origins:
+    - http://localhost:3000
