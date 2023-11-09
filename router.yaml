@@ -7,8 +7,10 @@ supergraph:
 sandbox:
   enabled: true
 
+# This needs to be false in production
 homepage:
-  enabled: true
+  enabled: false
+
 
 headers:
   all:
@@ -19,3 +21,7 @@ headers:
 cors:
   origins:
     - http://localhost:3000
+
+health_check:
+  listen: 0.0.0.0:8088
+  enabled: true
