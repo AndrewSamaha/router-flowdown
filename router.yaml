@@ -21,6 +21,7 @@ headers:
 cors:
   origins:
     - http://localhost:3000
+    - http://localhost:5173
 
 health_check:
   listen: 0.0.0.0:8088
